@@ -1,11 +1,11 @@
 package org.example;
 
-public class Personnages {
+public abstract class Personnage {
 
     String name;
     int HP;
 
-    public Personnages(String name, int HP, String type) {
+    public Personnage(String name, int HP) {
         this.name = name;
         this.HP = HP;
     }
@@ -29,14 +29,11 @@ public class Personnages {
         return HP;
     }
 
-    public Void addHP(int HP) {
+    public void addHP(int HP) {
         this.HP += HP;
-        return null;
     }
 
-    public Void blessure(int coup) {
-        this.addHP(-coup);
-        return null;
-    }
-
+    public abstract void attaquer(Personnage p);
+    public abstract int subitFrappe(int coup);
+    public abstract int subitCharme(int coup);
 }

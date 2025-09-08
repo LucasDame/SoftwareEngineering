@@ -1,24 +1,31 @@
 package org.example;
 
-public class Sorcier extends Personnages {
+public class Sorcier extends Personnage {
 
-    public Sorcier(String name, int HP) {
-        this.name = name;
-        this.HP = HP;
+    int power;
+
+    public Sorcier(String name, int HP, int power) {
+        super(name, HP);
+        this.power = power;
     }
 
-    private Void attaquer(Personnages p){
-        if (this.isDead())return null ;
-        int coup = this.getHP()/2;
-        p.subitFrappe(coup);
-        return null;
+
+
+    public void attaquer(Personnage p){
+        if (this.isDead())return ;
+        int coup = this.getHP()*this.power;
+        this.addHP(p.subitCharme(coup));
     }
 
-    public Void subitFrappe(int coup) {
+    public int subitFrappe(int coup) {
         this.addHP(-coup);
-        if  (this.isDead())return null;
-        blessure(this.getHP()/2);
-        return null;
+        return 0;
+    }
+
+    public int subitCharme(int coup) {
+        this.addHP(-coup);
+        if  (this.isDead())return 0;
+        return  this.getHP()/2;
     }
 
 }
