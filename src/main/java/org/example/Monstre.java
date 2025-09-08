@@ -14,13 +14,19 @@ public class Monstre extends Personnage {
 
     public int subitFrappe(int coup) {
         this.addHP(-coup);
-        if  (this.isDead())return 0;
+        if  (this.isDead()){
+            System.out.println(this);
+            return 0;
+        }
         return this.getHP()/2;
     }
 
     public int subitCharme(int coup) {
         this.addHP(-coup);
-        if  (this.isDead())return 0;
+        if  (this.isDead()){
+            System.out.println(this);
+            return 0;
+        }
         return this.getHP()/2;
     }
 
